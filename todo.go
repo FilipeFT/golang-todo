@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/utils"
+	"io/ioutil"
 	"os"
 	"time"
 )
@@ -51,7 +51,7 @@ func (l *List) Delete(i int) error {
 		return fmt.Errorf("Item %d does not exist", i)
 	}
 
-// Adjust index for 0 based index
+	// Adjust index for 0 based index
 	*l = append(ls[:i-1], ls[i:]...)
 
 	return nil
@@ -59,12 +59,12 @@ func (l *List) Delete(i int) error {
 
 // Save method encodes the list as JSON and saves it
 // using the provided file name
-func (l *List) Save(filename sting) error {
+func (l *List) Save(filename string) error {
 	js, err := json.Marshal(l)
 	if err != nil {
 		return err
 	}
-	
+
 	return ioutil.WriteFile(filename, js, 0644)
 }
 
@@ -78,10 +78,10 @@ func (l *List) Get(filename string) error {
 		}
 		return err
 	}
-	
+
 	if len(file) == 0 {
 		return nil
 	}
-	
+
 	return json.Unmarshal(file, l)
 }
