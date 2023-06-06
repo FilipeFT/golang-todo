@@ -56,3 +56,14 @@ func (l *List) Delete(i int) error {
 
 	return nil
 }
+
+// Save method encodes the list as JSON and saves it
+// using the provided file name
+func (l *List) Save(filename sting) error {
+	js, err := json.Marshal(l)
+	if err != nil {
+		return err
+	}
+	
+	return ioutil.WriteFile(filename, js, 0644)
+}
