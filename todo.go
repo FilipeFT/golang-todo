@@ -26,7 +26,7 @@ func (l *List) Add(task string) {
 		Task:        task,
 		Done:        false,
 		CreatedAt:   time.Now(),
-		CompletedAt: time.Time(),
+		CompletedAt: time.Time{},
 	}
 	*l = append(*l, t)
 }

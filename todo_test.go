@@ -82,7 +82,7 @@ func TestSaveGet(t *testing.T) {
 		t.Errorf("Expected %q, got %q instead.", taskName, l1[0].Task)
 	}
 	
-	tf, err := ioutilTempFile(" ", " ")
+	tf, err := ioutil.TempFile("", "")
 	
 	if err != nil {
 		t.Fatalf("Error creating temp file: %s", err)
@@ -99,6 +99,6 @@ func TestSaveGet(t *testing.T) {
 	}
 	
 	if l1[0].Task != l2[0].Task {
-		t.Errorf("Task %q should match 5q task.", l1[0].Task, l2[0].Task)
+		t.Errorf("Task %q should match %q task.", l1[0].Task, l2[0].Task)
 	}
 }
