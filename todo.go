@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// Item struct represents an item of a to-do list
 type item struct {
 	Task        string
 	Done        bool
@@ -16,8 +17,10 @@ type item struct {
 	CompletedAt time.Time
 }
 
+// List represents a list of to-do items
 type List []item
 
+// Add creates a new todo item and appends it to the list
 func (l *List) Add(task string) {
 	t := item{
 		Task:        task,
@@ -28,6 +31,8 @@ func (l *List) Add(task string) {
 	*l = append(*l, t)
 }
 
+// Complete method marks a to-do item as completed by
+// setting Done = true and CompletedAt to the current time
 func (l *List) Complete(i int) error {
 	ls := *l
 	if i <= 0 || i > len(ls) {
