@@ -8,7 +8,7 @@ import (
 )
 
 // Hardcoding the filename
-const todoFileName = ".todo.jason"
+const todoFileName = ".todo.json"
 
 func main() {
 

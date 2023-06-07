@@ -30,7 +30,7 @@ func TestMain(m *testing.M) {
 		os.Exit(1)
 	}
 
-	fmtPrintln("Running tests...")
+	fmt.Println("Running tests...")
 	result := m.Run()
 
 	fmt.Println("Cleaning up...")
@@ -51,15 +51,15 @@ func TestTodoCLI(t *testing.T) {
 
 	cmdPath := filepath.Join(dir, binName)
 
-	t.Run("AddNewTask", func(t testing.T) {
+	t.Run("AddNewTask", func(t *testing.T) {
 		cmd := exec.Command(cmdPath, strings.Split(task, " ")...)
 
-		if err := cmdRun(); err != nil {
+		if err := cmd.Run(); err != nil {
 			t.Fatal(err)
 		}
 	})
 
-	t.Run("ListTasks", func(t testing.T) {
+	t.Run("ListTasks", func(t *testing.T) {
 		cmd := exec.Command(cmdPath)
 		out, err := cmd.CombinedOutput()
 		if err != nil {
