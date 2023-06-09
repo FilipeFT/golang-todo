@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flags"
 	"fmt"
 	"github.com/FilipeFT/golang-todo"
 	"os"
@@ -11,6 +12,13 @@ import (
 const todoFileName = ".todo.json"
 
 func main() {
+	// Parsing command line flags
+	task := flag.String("task", "", "Task to be included in to-do list")
+	list := flag.Bool("list", false, "List all tasks")
+	complete := flag.Int("complete", 0, "Item to be completed")
+	
+	flag.Parse()
+
 
 	// Define an items list
 	l := &todo.List{}
